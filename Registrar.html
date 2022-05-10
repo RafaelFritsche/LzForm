@@ -10,10 +10,10 @@
 </head>
 <body>
     <div class="m-4">
-        <form action="Registrar.php" method="post">
+        <form name="formCadastro" onsubmit="return validarFormulario()" method="post">
             <div class="mb-3">
-                <label class="form-label" for="inputUser">Nome</label>
-                <input type="user" class="form-control" id="inputEmail" placeholder="Insira seu Nome" name="user" required>
+                <label class="form-label" for="nome">Nome:</label>
+                <input type="text" class="form-control" name="nome">
             </div>
             <div class="mb-3">
                 <label class="form-label" for="inputEmail">E-mail</label>
@@ -38,3 +38,42 @@
     </div>
 </body>
 </html>
+<script>
+    function validarFormulario() {
+        var user = document.forms["formCadastro"]["nome"].value;
+        var email = document.forms["formCadastro"]["email"].value;
+        var date = document.forms["formCadastro"]["date"].value;
+        var password = document.forms["formCadastro"]["password"].value;
+        var c_password = document.forms["formCadastro"]["c_password"].value;
+
+        if (email == "")  {
+            alert("Por favor, insira um e-mail válido ")
+            return false;
+        }
+
+        if (date == "") {
+            alert("Por favor, insira uma data válida ")
+            return false;
+        }
+
+        if (password == "") {
+            alert("Por favor, insira uma senha válida ")
+            return false;
+        }
+
+        if (c_password == "") {
+            alert("As senhas não coincidem ")
+            return false;
+        }
+
+        if (user == "") {
+            alert("Por favor, insira um usuário válido !");
+            return false;
+        }
+
+        if (user && email && date && password && c_password) {
+            alert("É um prazer te conhecer, " + user + " !");
+            return true;
+        }
+    }
+</script>
